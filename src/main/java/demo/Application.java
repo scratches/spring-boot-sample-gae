@@ -22,4 +22,9 @@ public class Application {
     	return "Hello World";
     }
 
+    @RequestMapping("/version")
+    public String getVersion() {
+    	return "1.0";
+    }
+
 }

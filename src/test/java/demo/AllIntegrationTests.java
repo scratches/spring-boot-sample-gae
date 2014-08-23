@@ -1,49 +1,43 @@
-package demo;/**
+
+package demo;
+
+/**
  * Author: wge
  * Date: 08/06/2014
  * Time: 09:09
  */
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import org.apache.log4j.Logger;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.IntegrationTest;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.TestRestTemplate;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-@IntegrationTest
-public class AllIntegrationTests
-{
-    private static final Logger log = Logger.getLogger(AllIntegrationTests.class);
+@IntegrationTest("server.port=0")
+public class AllIntegrationTests {
 
-    @Test
-    public void testVersion() throws IOException
-    {
-        HttpResponse response = runGet("http://127.0.0.1:8080/version");
-        String jsonStatusResponse = EntityUtils.toString(response.getEntity());
-        ObjectMapper objectMapper = new ObjectMapper();
-        String foundVersion = objectMapper.readValue(jsonStatusResponse, String.class);
-        log.info("found version = " + foundVersion);
-        Assert.assertEquals(foundVersion, "1.0");
-    }
+	private static final Logger log = Logger.getLogger(AllIntegrationTests.class);
 
-    private static HttpResponse runGet(String url) throws IOException
-    {
-        HttpGet get= new HttpGet(url);
-        return HttpClientBuilder.create().build().execute(get);
-    }
+	@Value("${local.server.port}")
+	private int port;
+
+	@Test
+	public void testVersion() throws IOException {
+		String body = new TestRestTemplate().getForObject("http://127.0.0.1:" + port
+				+ "/info", String.class);
+		log.info("found info = " + body);
+		assertTrue("Wrong body: " + body, body.contains("{\"version"));
+	}
+
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <cronentries>
+    <cron>
+      <url>/cron/item/</url>
+      <description>polling item Queue</description>
+      <schedule>every 1 mins synchronized</schedule>
+    </cron>
+ </cronentries>

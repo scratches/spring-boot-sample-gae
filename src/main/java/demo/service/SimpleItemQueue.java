@@ -27,7 +27,9 @@ public class SimpleItemQueue implements IQueueService
     private QueueItemListener rfqListener = new SelfPurger();
 
 
-    public SimpleItemQueue(){}
+    public SimpleItemQueue(){
+        log.info("called");
+    }
 
     @Override
     public void add(Item rfq)

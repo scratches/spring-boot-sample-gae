@@ -12,16 +12,6 @@
 		<listener-class>org.springframework.boot.legacy.context.web.SpringBootContextLoaderListener</listener-class>
 	</listener>
 
-	<filter>
-		<filter-name>metricFilter</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>metricFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -40,11 +30,17 @@
     <servlet>
         <servlet-name>itemQueueServlet</servlet-name>
         <servlet-class>demo.servlets.SelfPurgingQueueServlet</servlet-class>
-        <load-on-startup>2</load-on-startup>
+        <load-on-startup>4</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>itemQueueServlet</servlet-name>
         <url-pattern>/cron/item/*</url-pattern>
     </servlet-mapping>
+
+    <context-param>
+          <param-name>defaultHtmlEscape</param-name>
+          <param-value>true</param-value>
+      </context-param>
+
 
 </web-app>

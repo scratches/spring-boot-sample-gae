@@ -38,7 +38,6 @@ public class Application implements WebApplicationInitializer
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("itemQueueServlet", new SelfPurgingQueueServlet(simpleItemQueue));
         dispatcher.setLoadOnStartup(2);
         dispatcher.addMapping("/cron/item/*");
-        dispatcher.
     }
 
 }

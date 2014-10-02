@@ -16,7 +16,7 @@ import javax.servlet.ServletRegistration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class Application implements WebApplicationInitializer
+public class Application
 {
 
     private static final SimpleItemQueue simpleItemQueue = new SimpleItemQueue();
@@ -31,13 +31,5 @@ public class Application implements WebApplicationInitializer
         SpringApplication.run(Application.class, args);
     }
 
-
-    @Override
-    public void onStartup(ServletContext servletContext) throws ServletException
-    {
-        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("itemQueueServlet", new SelfPurgingQueueServlet(simpleItemQueue));
-        dispatcher.setLoadOnStartup(2);
-        dispatcher.addMapping("/cron/item/*");
-    }
 
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	<include resource="org/springframework/boot/logging/logback/basic.xml" />
-    <logger name="org.springframework.web" level="DEBUF"/>
-    <logger name="org.springframework.boot" level="DEBUG"/>
+
+    <logger name="org.springframework.web" level="INFO"/>
+    <logger name="org.springframework.boot" level="INFO"/>
 
 </configuration>

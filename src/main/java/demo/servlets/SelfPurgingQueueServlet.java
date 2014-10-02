@@ -3,7 +3,6 @@ package demo.servlets;
 import demo.service.SimpleItemQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
@@ -18,9 +17,12 @@ public class SelfPurgingQueueServlet extends HttpServlet
     private static final Logger log = LoggerFactory.getLogger(SelfPurgingQueueServlet.class);
 
     private static final long serialVersionUID = -1137258632691070463L;
+    private final         SimpleItemQueue simpleItemQueue;
 
-    @Autowired
-    SimpleItemQueue simpleItemQueue;
+    public SelfPurgingQueueServlet(SimpleItemQueue simpleItemQueue)
+    {
+        this.simpleItemQueue = simpleItemQueue;
+    }
 
     @Override
     public void init(ServletConfig config) throws ServletException

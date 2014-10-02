@@ -27,16 +27,6 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-    <servlet>
-        <servlet-name>itemQueueServlet</servlet-name>
-        <servlet-class>demo.servlets.SelfPurgingQueueServlet</servlet-class>
-        <load-on-startup>4</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>itemQueueServlet</servlet-name>
-        <url-pattern>/cron/item/*</url-pattern>
-    </servlet-mapping>
-
     <context-param>
           <param-name>defaultHtmlEscape</param-name>
           <param-value>true</param-value>

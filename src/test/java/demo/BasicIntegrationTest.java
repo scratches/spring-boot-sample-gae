@@ -25,9 +25,9 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest("server.port=0")
-public class AllIntegrationTests {
+public class BasicIntegrationTest {
 
-	private static final Logger log = Logger.getLogger(AllIntegrationTests.class);
+	private static final Logger log = Logger.getLogger(BasicIntegrationTest.class);
 
 	@Value("${local.server.port}")
 	private int port;

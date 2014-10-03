@@ -7,7 +7,7 @@ $ git clone https://github.com/scratches/spring-boot-legacy
 $ (cd spring-boot-legacy; mvn install)
 $ git clone https://github.com/scratches/spring-boot-sample-gae
 $ cd spring-boot-sample-gae
-$ mvn gae:deploy
+$ mvn appengine:update
 ```
 
-Also runs as a deployed WAR in WTP or regular Tomcat container. The `main()` app (normal Spring Boot launcher) should also work.
+Also runs as a deployed jar in a Jetty container. The `main()` app (normal Spring Boot launcher) should also work.

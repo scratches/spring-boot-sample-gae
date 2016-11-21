@@ -1,13 +1,4 @@
-Simple Spring Boot app that runs on Google AppEngine. No attempt has been made to use the Google APIs - just a minimal Spring app that works.
-
-Depends on [spring-boot-legacy](https://github.com/scratches/spring-boot-legacy) (which you will need to build and install locally):
-
-```
-$ git clone https://github.com/scratches/spring-boot-legacy
-$ (cd spring-boot-legacy; mvn install)
-$ git clone https://github.com/scratches/spring-boot-sample-gae
-$ cd spring-boot-sample-gae
-$ mvn gae:deploy
-```
-
-Also runs as a deployed WAR in WTP or regular Tomcat container. The `main()` app (normal Spring Boot launcher) should also work.
+If you need a simple Spring Boot app that runs on classic Google AppEngine,
+please look at the 
+[spring-boot-legacy](https://github.com/scratches/spring-boot-legacy) project (there's a sample there which 
+is an evolved version of this one).
